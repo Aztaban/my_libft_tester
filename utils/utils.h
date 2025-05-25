@@ -10,5 +10,10 @@
 
 void	print_result(const char *desc, int passed);
 void	print_line(void);
+void	run_char_tests(void);
+void	run_string_tests(void);
+void	run_memory_tests(void);
+void	run_conversion_tests(void);
+
 
 #endif
