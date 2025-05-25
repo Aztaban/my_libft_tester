@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 11:14:16 by mjusta            #+#    #+#             */
-/*   Updated: 2025/05/26 00:50:07 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/05/26 01:04:38 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	main(int argc, char **argv)
 {
-	printf("\n---------------- libft Functions Testser ---------------\n");
+	printf("\n---------------- libft Functions Tester ----------------\n");
 	print_line();
 	
 	if (argc > 1)
