@@ -125,6 +125,26 @@ static void	test_memmove(void)
 
 }
 
+static void	run_memchr_test(const char *desc, const void *src, int c, size_t n)
+{
+	const void *std = memchr(src, c, n);
+	const void *ft = ft_memchr(src, c, n);
+	int match = (std == ft) || (std && ft && memcmp(std, ft, 1) == 0);
+	print_result(desc, match);
+}
+
+void	test_memchr(void)
+{
+	char buffer[] = "libft42 test buffer";
+
+	run_memchr_test("ft_memchr: find '4'", buffer, '4', sizeof(buffer));
+	run_memchr_test("ft_memchr: find 't'", buffer, 't', sizeof(buffer));
+	run_memchr_test("ft_memchr: find 'f'", buffer, 'f', 4);      // found early
+	run_memchr_test("ft_memchr: find 'z' (not present)", buffer, 'z', sizeof(buffer));
+	run_memchr_test("ft_memchr: find '\\0'", buffer, '\0', sizeof(buffer));
+	run_memchr_test("ft_memchr: zero bytes", buffer, '4', 0);    // edge case
+}
+
 void    run_memory_tests(void)
 {   
     printf("\n[ Memory tests ]\n");
@@ -136,5 +156,7 @@ void    run_memory_tests(void)
 	test_memcpy();
 	print_line();
 	test_memmove();
+	print_line();
+	test_memchr();
 	print_line();
 }
