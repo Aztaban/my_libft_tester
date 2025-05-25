@@ -96,6 +96,25 @@ void	test_strrchr(void)
 	run_strrchr_test("ft_strrchr(\"hellohello\", 'l')", "hellohello", 'l');
 }
 
+static void run_strncmp_test(const char *desc, const char *s1, const char *s2, size_t n) {
+	int std = strncmp(s1, s2, n);
+	int ft = ft_strncmp(s1, s2, n);
+	print_result(desc, (std == 0 && ft == 0) || (std < 0 && ft < 0) || (std > 0 && ft > 0));
+}
+
+void test_strncmp(void) {
+	run_strncmp_test("ft_strncmp: equal strings", "hello", "hello", 5);
+	run_strncmp_test("ft_strncmp: equal strings, short n", "hello", "hello", 2);
+	run_strncmp_test("ft_strncmp: different at end", "hello", "helLo", 5);
+	run_strncmp_test("ft_strncmp: first shorter", "abc", "abcd", 4);
+	run_strncmp_test("ft_strncmp: second shorter", "abcd", "abc", 4);
+	run_strncmp_test("ft_strncmp: empty vs non-empty", "", "abc", 3);
+	run_strncmp_test("ft_strncmp: non-empty vs empty", "abc", "", 3);
+	run_strncmp_test("ft_strncmp: both empty", "", "", 1);
+	run_strncmp_test("ft_strncmp: n = 0", "abc", "xyz", 0);
+	run_strncmp_test("ft_strncmp: long identical prefix", "libft42", "libft42test", 6);
+}
+
 void    run_string_tests(void)
 {   
     printf("\n[ String tests ]\n");
@@ -109,5 +128,7 @@ void    run_string_tests(void)
 	test_strchr();
 	print_line();
 	test_strrchr();
+	print_line();
+	test_strncmp();
 	print_line();
 }
