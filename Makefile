@@ -6,7 +6,7 @@
 #    By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/21 11:27:58 by mjusta            #+#    #+#              #
-#    Updated: 2025/05/25 17:53:12 by mjusta           ###   ########.fr        #
+#    Updated: 2025/05/26 00:44:34 by mjusta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,5 +33,8 @@ clean:
 	rm -f $(NAME)
 
 re: clean all
+
+valgrind:
+	@valgrind --leak-check=full --track-origins=yes ./$(NAME)
 
 .PHONY: all clean
