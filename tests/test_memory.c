@@ -145,6 +145,36 @@ void	test_memchr(void)
 	run_memchr_test("ft_memchr: zero bytes", buffer, '4', 0);    // edge case
 }
 
+static void run_memcmp_test(const char *desc, const void *s1, const void *s2, size_t n)
+{
+	int std = memcmp(s1, s2, n);
+	int ft = ft_memcmp(s1, s2, n);
+
+	// Normalize to only compare sign (-, 0, +)
+	int result = ((std == 0 && ft == 0) ||
+				(std < 0 && ft < 0) ||
+				(std > 0 && ft > 0));
+
+	print_result(desc, result);
+}
+
+void test_memcmp(void)
+{
+	char a[] = "libft42";
+	char b[] = "libft42";
+	char c[] = "libFT42";
+	char d[] = "lib";
+
+	run_memcmp_test("ft_memcmp: identical", a, b, 7);
+	run_memcmp_test("ft_memcmp: different at 4th char", a, c, 7);
+	run_memcmp_test("ft_memcmp: only first 3 match", a, d, 3);
+	run_memcmp_test("ft_memcmp: empty vs empty", "", "", 0);
+	run_memcmp_test("ft_memcmp: early mismatch", "abc", "axc", 2);
+	run_memcmp_test("ft_memcmp: mismatch after null", "abc\0z", "abc\0y", 6);
+	run_memcmp_test("ft_memcmp: partial match", "abcd", "abcf", 3);
+	run_memcmp_test("ft_memcmp: different lengths", "abc", "abcdef", 6);
+}
+
 void    run_memory_tests(void)
 {   
     printf("\n[ Memory tests ]\n");
@@ -158,5 +188,7 @@ void    run_memory_tests(void)
 	test_memmove();
 	print_line();
 	test_memchr();
+	print_line();
+	test_memcmp();
 	print_line();
 }
