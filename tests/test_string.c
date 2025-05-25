@@ -78,7 +78,7 @@ static void	run_strrchr_test(const char *desc, const char *s, int c)
 	print_result(desc, std == ft || (std && ft && strcmp(std, ft) == 0));
 }
 
-void	test_strchr(void)
+static void	test_strchr(void)
 {
 	run_strchr_test("ft_strchr(\"hello\", 'e')", "hello", 'e');
 	run_strchr_test("ft_strchr(\"hello\", 'l')", "hello", 'l');
@@ -87,7 +87,7 @@ void	test_strchr(void)
 	run_strchr_test("ft_strchr(\"hello\", 'z')", "hello", 'z');
 }
 
-void	test_strrchr(void)
+static void	test_strrchr(void)
 {
 	run_strrchr_test("ft_strrchr(\"hello\", 'l')", "hello", 'l');
 	run_strrchr_test("ft_strrchr(\"hello\", 'o')", "hello", 'o');
@@ -102,17 +102,38 @@ static void run_strncmp_test(const char *desc, const char *s1, const char *s2, s
 	print_result(desc, (std == 0 && ft == 0) || (std < 0 && ft < 0) || (std > 0 && ft > 0));
 }
 
-void test_strncmp(void) {
+static void test_strncmp(void) {
 	run_strncmp_test("ft_strncmp: equal strings", "hello", "hello", 5);
 	run_strncmp_test("ft_strncmp: equal strings, short n", "hello", "hello", 2);
 	run_strncmp_test("ft_strncmp: different at end", "hello", "helLo", 5);
-	run_strncmp_test("ft_strncmp: first shorter", "abc", "abcd", 4);
-	run_strncmp_test("ft_strncmp: second shorter", "abcd", "abc", 4);
+	run_strncmp_test("ft_strncmp: first is shorter", "abc", "abcd", 4);
+	run_strncmp_test("ft_strncmp: second is shorter", "abcd", "abc", 4);
 	run_strncmp_test("ft_strncmp: empty vs non-empty", "", "abc", 3);
 	run_strncmp_test("ft_strncmp: non-empty vs empty", "abc", "", 3);
 	run_strncmp_test("ft_strncmp: both empty", "", "", 1);
 	run_strncmp_test("ft_strncmp: n = 0", "abc", "xyz", 0);
 	run_strncmp_test("ft_strncmp: long identical prefix", "libft42", "libft42test", 6);
+}
+
+static void run_strnstr_test(const char *desc, const char *haystack, const char *needle, size_t len)
+{
+	char *std = strnstr(haystack, needle, len);
+	char *ft = ft_strnstr(haystack, needle, len);
+	print_result(desc, std == ft || (std && ft && strcmp(std, ft) == 0));
+}
+
+static void test_strnstr(void)
+{
+	run_strnstr_test("ft_strnstr: found inside range", "Hello, 42Prague!", "42", 15);
+	run_strnstr_test("ft_strnstr: not found (needle out of range)", "Hello, 42Prague!", "42", 5);
+	run_strnstr_test("ft_strnstr: partial match only", "abcdef", "cdg", 6);
+	run_strnstr_test("ft_strnstr: full match just fits", "abcdef", "def", 6);
+	run_strnstr_test("ft_strnstr: needle is empty", "abcdef", "", 3);
+	run_strnstr_test("ft_strnstr: haystack is empty", "", "abc", 5);
+	run_strnstr_test("ft_strnstr: both empty", "", "", 2);
+	run_strnstr_test("ft_strnstr: len is 0", "abcdef", "abc", 0);
+	run_strnstr_test("ft_strnstr: exact match, full length", "abc", "abc", 3);
+	run_strnstr_test("ft_strnstr: needle longer than haystack", "abc", "abcdef", 5);
 }
 
 void    run_string_tests(void)
@@ -130,5 +151,7 @@ void    run_string_tests(void)
 	test_strrchr();
 	print_line();
 	test_strncmp();
+	print_line();
+	test_strnstr();
 	print_line();
 }
