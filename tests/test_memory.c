@@ -175,6 +175,39 @@ void test_memcmp(void)
 	run_memcmp_test("ft_memcmp: different lengths", "abc", "abcdef", 6);
 }
 
+static void run_calloc_test(const char *desc, size_t count, size_t size)
+{
+	void *mem = ft_calloc(count, size);
+	int passed = 1;
+
+	if (mem == NULL && count * size != 0)
+		passed = 0;
+	else if (mem != NULL)
+	{
+		unsigned char *bytes = (unsigned char *)mem;
+		for (size_t i = 0; i < count * size; i++)
+		{
+			if (bytes[i] != 0)
+			{
+				passed = 0;
+				break;
+			}
+		}
+	}
+	print_result(desc, passed);
+	free(mem);
+}
+
+void test_calloc(void)
+{
+	run_calloc_test("ft_calloc: 10 ints", 10, sizeof(int));
+	run_calloc_test("ft_calloc: 0 count", 0, sizeof(int));
+	run_calloc_test("ft_calloc: 0 size", 10, 0);
+	run_calloc_test("ft_calloc: 0 total", 0, 0);
+	run_calloc_test("ft_calloc: 100 bytes", 100, 1);
+	run_calloc_test("ft_calloc: large allocation", 1024, 1024); // 1 MB
+}
+
 void    run_memory_tests(void)
 {   
     printf("\n[ Memory tests ]\n");
@@ -190,5 +223,7 @@ void    run_memory_tests(void)
 	test_memchr();
 	print_line();
 	test_memcmp();
+	print_line();
+	test_calloc();
 	print_line();
 }
