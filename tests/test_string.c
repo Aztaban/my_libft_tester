@@ -136,6 +136,23 @@ static void test_strnstr(void)
 	run_strnstr_test("ft_strnstr: needle longer than haystack", "abc", "abcdef", 5);
 }
 
+static void run_strdup_test(const char *desc, const char *input)
+{
+	char *ft = ft_strdup(input);
+	int passed = (ft != NULL && strcmp(ft, input) == 0);
+
+	print_result(desc, passed);
+	free(ft);
+}
+
+static void test_strdup(void)
+{
+	run_strdup_test("ft_strdup: basic", "libft");
+	run_strdup_test("ft_strdup: empty string", "");
+	run_strdup_test("ft_strdup: special chars", "42!@#\t\n");
+	run_strdup_test("ft_strdup: long string", "This is a longer test string with lots of characters.");
+}
+
 void    run_string_tests(void)
 {   
     printf("\n[ String tests ]\n");
@@ -153,5 +170,7 @@ void    run_string_tests(void)
 	test_strncmp();
 	print_line();
 	test_strnstr();
+	print_line();
+	test_strdup();
 	print_line();
 }
