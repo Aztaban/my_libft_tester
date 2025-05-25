@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 11:14:16 by mjusta            #+#    #+#             */
-/*   Updated: 2025/05/24 16:39:27 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/05/25 23:21:20 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	run_conversion_tests(void);
 
 int	main(int argc, char **argv)
 {
-	printf("\n------------ libft Function Tests ------------\n");
+	printf("\n---------------- libft Functions Testser ---------------\n");
 	print_line();
 	
 	if (argc > 1)
