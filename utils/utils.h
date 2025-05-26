@@ -21,5 +21,6 @@ void	run_string_tests(void);
 void	run_memory_tests(void);
 void	run_conversion_tests(void);
 void	run_fd_tests(void);
+void	run_string_extra_tests(void);
 
 #endif

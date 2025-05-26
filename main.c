@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 11:14:16 by mjusta            #+#    #+#             */
-/*   Updated: 2025/05/26 23:17:26 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/05/26 23:46:33 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	main(int argc, char **argv)
 		{"string", run_string_tests},
 		{"memory", run_memory_tests},
 		{"conversion", run_conversion_tests},
-		{"fd", run_fd_tests}
+		{"fd", run_fd_tests},
+		{"string++", run_string_extra_tests}
 	};
 	const int num_categories = sizeof(categories) / sizeof(TestCategory);
 

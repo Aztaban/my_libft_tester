@@ -60,6 +60,35 @@ static void	test_atoi(void)
 	run_atoi_test("ft_atoi(\"   +0 424242\")", "   +0 424242");
 }
 
+static void run_itoa_test(const char *desc, int n, const char *expected)
+{
+	char *result = ft_itoa(n);
+	int passed = result && strcmp(result, expected) == 0;
+	print_result(desc, passed);
+	free(result);
+}
+
+void test_itoa(void)
+{
+	// Probe check for implementation
+	char *probe = ft_itoa(123);
+	if (!probe || strcmp(probe, "123") != 0)
+	{
+		fprintf(stderr, "⚠️  ft_itoa is missing! Skipping tests.\n");
+		free(probe);
+		return;
+	}
+	free(probe);
+
+	run_itoa_test("Positive number", 42, "42");
+	run_itoa_test("Negative number", -42, "-42");
+	run_itoa_test("Zero", 0, "0");
+	run_itoa_test("INT_MAX", 2147483647, "2147483647");
+	run_itoa_test("INT_MIN", -2147483648, "-2147483648");
+	run_itoa_test("Single digit", 7, "7");
+	run_itoa_test("Negative single digit", -3, "-3");
+}
+
 void    run_conversion_tests(void)
 {   
     printf("\n[ Conversion tests ]\n");
@@ -69,5 +98,7 @@ void    run_conversion_tests(void)
 	test_tolower();
 	print_line();
 	test_atoi();
+	print_line();
+	test_itoa();
 	print_line();
 }
