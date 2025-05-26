@@ -6,11 +6,11 @@
 #    By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/21 11:27:58 by mjusta            #+#    #+#              #
-#    Updated: 2025/05/26 18:41:03 by mjusta           ###   ########.fr        #
+#    Updated: 2025/05/26 23:05:52 by mjusta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft_test
+NAME = libftester
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I..
 BSD = -lbsd

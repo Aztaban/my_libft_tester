@@ -9,6 +9,11 @@
 #include <bsd/string.h>
 #include <unistd.h>
 
+typedef struct {
+	const char *name;
+	void (*func)(void);
+} TestCategory;
+
 void	print_result(const char *desc, int passed);
 void	print_line(void);
 void	run_char_tests(void);
