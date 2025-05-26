@@ -37,7 +37,6 @@ static void test_putchar_fd(void)
 	test_putchar_fd_case('@', "@", "ft_putchar_fd('@')");
 }
 
-
 static void test_putstr_fd_case(const char *input, const char *expected, const char *desc)
 {
 	int saved_stdout = dup(STDOUT_FILENO);
@@ -99,7 +98,6 @@ static void test_putendl_fd(void)
 	test_putendl_fd_case(NULL, "", "ft_putendl_fd(NULL)");
 	test_putendl_fd_case("Test42", "Test42\n", "ft_putendl_fd(\"Test42\")");
 }
-
 
 static void test_putnbr_fd_case(int input, const char *expected, const char *desc)
 {
