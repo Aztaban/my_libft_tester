@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 11:14:16 by mjusta            #+#    #+#             */
-/*   Updated: 2025/05/27 19:09:48 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/05/27 19:14:45 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	print_usage(void)
 {
-	printf("Usage: ./tester [category]\n");
+	printf("Usage: ./libftester [category]\n");
 	printf("Available categories:\n");
 	printf("  char        - Character-related functions\n");
 	printf("  string      - String manipulation functions\n");
@@ -29,6 +29,7 @@ void	print_usage(void)
 int	main(int argc, char **argv)
 {
 	TestCategory categories[] = {
+		{"use", print_usage},
 		{"char", run_char_tests},
 		{"string", run_string_tests},
 		{"memory", run_memory_tests},
