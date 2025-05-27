@@ -121,12 +121,11 @@ void test_strjoin(void)
 	}
 	free(probe);
 
-	run_strjoin_test("Join 'Hello' + 'World'", "Hello", "World", "HelloWorld");
-	run_strjoin_test("Join 'Hello' + ''", "Hello", "", "Hello");
-	run_strjoin_test("Join '' + 'World'", "", "World", "World");
-	run_strjoin_test("Join '' + ''", "", "", "");
-
-	run_strjoin_test("Join long strings",
+	run_strjoin_test("ft_strjoin Join 'Hello' + 'World'", "Hello", "World", "HelloWorld");
+	run_strjoin_test("ft_strjoin Join 'Hello' + ''", "Hello", "", "Hello");
+	run_strjoin_test("ft_strjoin Join '' + 'World'", "", "World", "World");
+	run_strjoin_test("ft_strjoin Join '' + ''", "", "", "");
+	run_strjoin_test("ft_strjoin Join long strings",
 		"This is a long string. ",
 		"And this continues the journey.",
 		"This is a long string. And this continues the journey.");
@@ -166,9 +165,9 @@ void test_strmapi(void)
 	}
 	free(probe);
 
-	run_strmapi_test("Uppercase mapping", "hello", to_upper_indexed, "HELLO");
-	run_strmapi_test("Index to ASCII", "abcde", to_ascii_from_index, "ABCDE");
-	run_strmapi_test("Empty string", "", to_upper_indexed, "");
+	run_strmapi_test("ft_strmapi Uppercase mapping", "hello", to_upper_indexed, "HELLO");
+	run_strmapi_test("ft_strmapi Index to ASCII", "abcde", to_ascii_from_index, "ABCDE");
+	run_strmapi_test("ft_strmapi Empty string", "", to_upper_indexed, "");
 }
 
 static void run_strtrim_test(const char *desc, const char *s1, const char *set, const char *expected)
@@ -191,13 +190,13 @@ void test_strtrim(void)
 	}
 	free(probe);
 
-	run_strtrim_test("Trim spaces", "   hello   ", " ", "hello");
-	run_strtrim_test("Trim punctuation", "...hello...", ".", "hello");
-	run_strtrim_test("Trim mixed set", "abcHelloabc", "abc", "Hello");
-	run_strtrim_test("No trim needed", "42Prague", "x", "42Prague");
-	run_strtrim_test("Trim everything", "xxxx", "x", "");
-	run_strtrim_test("Empty string input", "", "x", "");
-	run_strtrim_test("Empty set", " test ", "", " test ");
+	run_strtrim_test("ft_strtrim Trim spaces", "   hello   ", " ", "hello");
+	run_strtrim_test("ft_strtrim Trim punctuation", "...hello...", ".", "hello");
+	run_strtrim_test("ft_strtrim Trim mixed set", "abcHelloabc", "abc", "Hello");
+	run_strtrim_test("ft_strtrim No trim needed", "42Prague", "x", "42Prague");
+	run_strtrim_test("ft_strtrim Trim everything", "xxxx", "x", "");
+	run_strtrim_test("ft_strtrim Empty string input", "", "x", "");
+	run_strtrim_test("ft_strtrim Empty set", " test ", "", " test ");
 }
 
 static void run_substr_test(const char *desc, const char *s, unsigned int start, size_t len, const char *expected)
@@ -220,12 +219,12 @@ void test_substr(void)
 	}
 	free(probe);
 
-	run_substr_test("Middle of string", "HelloWorld", 5, 3, "Wor");
-	run_substr_test("Start from 0", "42Prague", 0, 2, "42");
-	run_substr_test("Full string", "libft", 0, 10, "libft");
-	run_substr_test("Start beyond end", "test", 10, 5, "");
-	run_substr_test("Zero length", "hello", 2, 0, "");
-	run_substr_test("Empty string", "", 0, 5, "");
+	run_substr_test("ft_substr Middle of string", "HelloWorld", 5, 3, "Wor");
+	run_substr_test("ft_substr Start from 0", "42Prague", 0, 2, "42");
+	run_substr_test("ft_substr Full string", "libft", 0, 10, "libft");
+	run_substr_test("ft_substr Start beyond end", "test", 10, 5, "");
+	run_substr_test("ft_substr Zero length", "hello", 2, 0, "");
+	run_substr_test("ft_substr Empty string", "", 0, 5, "");
 }
 
 void	run_string_extra_tests()
