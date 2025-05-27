@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 11:14:16 by mjusta            #+#    #+#             */
-/*   Updated: 2025/05/26 23:46:33 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/05/27 19:09:48 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	print_usage(void)
 	printf("  memory      - Memory manipulation functions\n");
 	printf("  conversion  - Type conversion functions\n");
 	printf("  fd          - File descriptor output functions\n");
+	printf("  string++    - Additional string manipulation functions\n");
 	printf("No argument runs all tests.\n");
 }
 
