@@ -80,13 +80,13 @@ void test_itoa(void)
 	}
 	free(probe);
 
-	run_itoa_test("Positive number", 42, "42");
-	run_itoa_test("Negative number", -42, "-42");
-	run_itoa_test("Zero", 0, "0");
-	run_itoa_test("INT_MAX", 2147483647, "2147483647");
-	run_itoa_test("INT_MIN", -2147483648, "-2147483648");
-	run_itoa_test("Single digit", 7, "7");
-	run_itoa_test("Negative single digit", -3, "-3");
+	run_itoa_test("ft_itoa(42)", 42, "42");
+	run_itoa_test("ft_itoa(-42)", -42, "-42");
+	run_itoa_test("ft_itoa(0)", 0, "0");
+	run_itoa_test("ft_itoa(2147483647)", 2147483647, "2147483647");
+	run_itoa_test("ft_itoa(-2147483648)", -2147483648, "-2147483648");
+	run_itoa_test("ft_itoa(7)", 7, "7");
+	run_itoa_test("ft_itoa(-3)", -3, "-3");
 }
 
 void    run_conversion_tests(void)
