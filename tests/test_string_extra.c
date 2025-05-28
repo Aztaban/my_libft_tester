@@ -5,63 +5,70 @@ static int compare_split(char **result, const char **expected)
 	if (!result || !expected)
 		return 0;
 
-	for (int i = 0; expected[i] != NULL; i++)
+	int i = 0;
+	while (expected[i])
 	{
 		if (!result[i] || strcmp(result[i], expected[i]) != 0)
 			return 0;
+		i++;
 	}
-	if (result && result[0] == NULL && expected[0] == NULL)
-		return 1;
-	return result[expected[0] == NULL ? 1 : strlen(*expected)] == NULL;
+	return result[i] == NULL;
+}
+
+void free_split_result(char **result)
+{
+	if (!result)
+		return;
+
+	for (int i = 0; result[i]; i++)
+		free(result[i]);
+	free(result);
 }
 
 static void	test_ft_split(void)
 {
-	if (ft_split("check", ' ') == NULL)
+	char **test_check = ft_split("check", ' ');
+	if (!test_check)
 	{
 		fprintf(stderr, "⚠️  ft_split is missing! Skipping tests.\n");
 		return;
 	}
+	free_split_result(test_check);
 
 	// === Test 1 ===
 	const char *s1 = "Hello world 42";
 	const char *e1[] = {"Hello", "world", "42", NULL};
 	char **r1 = ft_split(s1, ' ');
 	print_result("ft_split(\"Hello world 42\", ' ')", compare_split(r1, e1));
-	for (int i = 0; r1 && r1[i]; i++) free(r1[i]);
-	free(r1);
+	free_split_result(r1);
 
 	// === Test 2 ===
 	const char *s2 = "apple,banana,,kiwi";
 	const char *e2[] = {"apple", "banana", "kiwi", NULL};
 	char **r2 = ft_split(s2, ',');
 	print_result("ft_split(\"apple,banana,,kiwi\", ',')", compare_split(r2, e2));
-	for (int i = 0; r2 && r2[i]; i++) free(r2[i]);
-	free(r2);
+	free_split_result(r2);
 
 	// === Test 3 ===
 	const char *s3 = "--split--me--";
 	const char *e3[] = {"split", "me", NULL};
 	char **r3 = ft_split(s3, '-');
 	print_result("ft_split(\"--split--me--\", '-')", compare_split(r3, e3));
-	for (int i = 0; r3 && r3[i]; i++) free(r3[i]);
-	free(r3);
+	free_split_result(r3);
 
 	// === Test 4 ===
 	const char *s4 = "singleword";
 	const char *e4[] = {"singleword", NULL};
 	char **r4 = ft_split(s4, ' ');
 	print_result("ft_split(\"singleword\", ' ')", compare_split(r4, e4));
-	for (int i = 0; r4 && r4[i]; i++) free(r4[i]);
-	free(r4);
+	free_split_result(r4);
 
 	// === Test 5 ===
 	const char *s5 = "";
 	const char *e5[] = {NULL};
 	char **r5 = ft_split(s5, ' ');
 	print_result("ft_split(\"\", ' ')", compare_split(r5, e5));
-	if (r5)
-		free(r5);
+	free_split_result(r5);
 }
 
 static void to_upper(unsigned int i, char *c)
