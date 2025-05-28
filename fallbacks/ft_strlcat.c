@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "../../libft/libft.h"
 
-char *ft_strrchr(const char *s, int c)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	(void)s; (void)c;
-	fprintf(stderr, "⚠️  ft_strrchr is missing!\n");
+	(void)dst; (void)src; (void)size;
+	fprintf(stderr, "⚠️  ft_strlcat is missing!\n");
 	return NULL;
 }
